@@ -2,12 +2,15 @@ import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import styles from '@/app/ui/home.module.css';
+import { generateClient } from 'aws-amplify/data';
 import { lusitana } from './ui/fonts';
 import Image from 'next/image';
 import { Amplify } from 'aws-amplify';
 import outputs from '@/amplify_outputs.json';
+import type { Schema } from '@/amplify/data/resource';
 
 Amplify.configure(outputs);
+export const client = generateClient<Schema>();
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6">
